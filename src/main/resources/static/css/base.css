@@ -1,0 +1,45 @@
+@charset "ISO-8859-1";
+
+
+
+:root{
+	--primary-clr: #55590d;
+	--secondary-clr: #a6b89c;
+	
+	--light-clr:#a6b89c;
+	--dark-clr: #474d5c;
+	--white-clr: #fff;
+	--font-primary: 'Roboto', sans-serif;
+	
+	--grid-column: [left-start] minmax(min-content, 1fr) [left-end] repeat(10, [col-start] minmax(min-content,15rem) [col-end]) [right-start] minmax(min-content, 1fr) [right-end];
+	
+	--font-clr: #212121;
+	--padding-xs: 1rem;
+	--padding-sm: 2rem;
+	--padding-md: 4rem;
+	--padding-lg: 6rem;
+	--border-radius-sm: 5px;
+	--border-radius-lg: 20px;
+	
+	--box-shadow: 0 0 .5rem rgba(180, 180, 180, .5);
+}
+
+*,
+*::before,
+*::after
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+	
+}
+
+
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    color: var(--font-clr);
+	font-family: 'Montserrat', sans-serif;
+}
+

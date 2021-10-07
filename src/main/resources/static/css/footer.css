@@ -1,0 +1,70 @@
+@charset "ISO-8859-1";
+
+/* FOOTER */
+@import url('https://fonts.googleapis.com/css2?family=Birthstone&family=Ephesis&display=swap');
+.footer {
+	padding: var(--padding-md);
+	background-color: var(--primary-clr);
+
+	color: white;
+	
+	display: grid;
+	grid-gap: 2rem;
+
+}
+h2 {
+	font-size: 4rem;
+	justify-self: center;
+	align-self: start;
+	text-transform: uppercase;
+	font-family: 'Birthstone', cursive;
+}
+
+.three_initials {
+	color: var(--secondary-clr);
+}
+
+
+.footer_list {
+	list-style: none;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));
+
+}
+
+.footer_item {
+	font-weight: 300;
+	justify-self: center;
+	align-self: center;
+	padding: var(--padding-sm);
+	transition: background-color 300ms, transform 300ms, color 300ms;
+}
+
+.footer_item:hover{
+	transform: translateY(3px);
+}
+
+
+
+.footer_link:link,
+.footer_link:visited{
+	text-decoration: none;
+	font-size: 1.2rem;
+	padding: 1rem 3rem;
+	border-radius: 5px;
+	letter-spacing: .2rem;
+	color: var(--white-clr);
+	text-transform: uppercase;
+}
+
+.footer_link:hover {
+	background-color: var(--dark-clr);
+	color: var(--light-clr);
+	
+}
+
+
+.copyright {
+	justify-self: center;
+}

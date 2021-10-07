@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+
+.about_page {
+	width: 100vw;
+	height: 80vh;
+	display: grid;
+	padding: 10rem;
+	grid-template-columns: var(--grid-column);
+	
+	grid-template-rows: repeat(auto-fit, minmax(min-content, 20rem))
+
+}
+
+.about_left_section {
+	grid-column: 4 / span 3;
+	padding: 1rem;
+	align-self: center;
+}
+
+.about_img {
+	grid-column: 7 / span 3;
+	padding: 1rem;
+}
+
+.about_img > img {
+	width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+}

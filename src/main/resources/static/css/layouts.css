@@ -1,0 +1,23 @@
+@charset "ISO-8859-1";
+
+.home_container {
+	display: grid;
+	
+	grid-template-rows: repeat(auto-fit,min-content);
+	grid-template-columns: 	var(--grid-column);
+	
+	grid-row-gap: 5rem;
+
+}
+
+
+.log_reg_container {
+	padding: 10rem;
+	display: grid;
+
+	grid-template-columns: minmax(30rem,30rem);
+	grid-template-rows: minmax(30rem, 30rem);
+	justify-content: center;
+	
+	position: relative;
+}

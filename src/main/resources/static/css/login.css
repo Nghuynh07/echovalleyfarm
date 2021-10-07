@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+.login_wrapper > div,
+.register_wrapper > a
+{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2rem;
+	width: 100%;
+	outline: 1px solid white;
+	cursor:pointer;
+	text-decoration: underline;
+}
+
+.login_wrapper > div > a:link,
+.login_wrapper > div > a:visited,
+.register_wrapper > a:link,
+.register_wrapper > a:visited {
+	color: var(--primary-clr)
+}
+
+.hidden {
+	display: none;
+}
+

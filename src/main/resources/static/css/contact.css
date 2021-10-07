@@ -1,0 +1,69 @@
+@charset "ISO-8859-1";
+
+
+.contact {
+
+	grid-row: 4 / span 1;
+	grid-column: 4 / 10;
+	background-color: var(--light-clr);
+	padding: var(--padding-md);
+	border-radius: var(--border-radius-sm);
+	box-shadow: var(--box-shadow);
+	margin-bottom: 8rem;
+	
+	color: var(--dark-clr);
+}
+
+.contact_container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
+	grid-gap: var(--padding-sm);
+	
+}
+
+.message, .contact_infos{
+	font-size: 1.6rem;
+	text-align: center;
+	align-self: center;
+}
+
+
+.contact_wrapper {
+	display: grid;
+}
+
+.contact_label {
+	margin: 1rem 0;
+	font-size: 1.4rem;
+}
+
+.contact_input {
+	border: none;
+	outline: none;
+	border-radius: var(--border-radius-sm);
+	padding:  .5rem 1rem;
+}
+
+
+.contact_details {
+	margin-bottom: 3rem;
+	font-size: 1.8rem;
+}
+
+.contact_form {
+	border: none;
+	outline: none;
+	padding: var(--padding-sm);
+	border-radius: var(--border-radius-sm);
+	box-shadow: 0 0 1rem rgba(255, 255, 255, .9);
+}
+
+.input {
+	height: 5rem;
+}
+
+@media only screen and (max-width: 800px){
+	.contact {
+		display: flex;
+	}
+}

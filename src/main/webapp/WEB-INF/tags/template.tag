@@ -16,8 +16,10 @@
 <nav class="navbar">
 <ul class="navbar_list">
 	<li class="logo"><a class="navbar_logo" href="/">EVF</a></li>
-	<li class="navbar_item"><a class="navbar_link" href="/profile">Profile</a></li>
-	<li class="navbar_item"><a class="navbar_link"" href="/products">Produces</a></li>
+
+	<!-- <li class="navbar_item"><a class="navbar_link" href="/profile">Profile</a></li> -->
+
+	<li class="navbar_item"><a class="navbar_link"" href="/products">Produce</a></li>
 	<li class="navbar_item"><a class="navbar_link"" href="/logout">Logout</a></li>
 	<li class="navbar_item"><a class="navbar_link" href="/login">Login</a></li>
 	<li class="navbar_item"><a class="shopping_cart cart-font" href="/shoppingCart">Cart<i class="fa fa-shopping-cart"><span class="cart_number">${items.size()}</span></i></a></li>

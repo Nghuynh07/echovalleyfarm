@@ -20,6 +20,7 @@
 
 </header>
 
+<p class="arrow">&#8593;</p>
 
 <!-- MAIN -->
 
@@ -30,6 +31,7 @@
 
 
 <!-- BLUEBERRY -->
+
 
 <div class="card">
 

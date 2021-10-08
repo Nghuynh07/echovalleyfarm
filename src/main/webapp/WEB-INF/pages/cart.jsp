@@ -52,9 +52,7 @@
 <p>Plus tax</p>
 <h2></h2>
 </div>
-
 <a href="/checkout" class="btn_link checkout_btn">Checkout</a>
-
 </div>
 
 

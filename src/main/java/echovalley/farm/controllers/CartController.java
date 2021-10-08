@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import echovalley.farm.services.CartItemService;
 import echovalley.farm.services.CartService;
@@ -63,8 +64,8 @@ public class CartController {
 	
 	@GetMapping("/removeCartItem/{id}")
 	public String removeItem(@PathVariable("id") Long id, HttpSession session) {
-		String sessionToken = (String) session.getAttribute("tokenSession");
-		cartService.removeCartIemFromShoppingCart(id,sessionToken);
+		String token = (String) session.getAttribute("tokenSession");
+		cartService.removeItemFromCart(id,token);
 		System.out.println("success");
 		return "redirect:/shoppingCart";
 	}
@@ -84,12 +85,13 @@ public class CartController {
 	}
 	
 	@GetMapping("/checkout")
-	public String checkout(HttpSession session, Model model) {
+	public String checkout(HttpSession session, Model model, RedirectAttributes redirect) {
 		model.addAttribute("items", cartItemService.getCartItems());
 		String tokenSession = (String)session.getAttribute("tokenSession");
 		Long id = (Long)session.getAttribute("user__id");
 		if(id == null) {
-			return "redirect:/";
+			redirect.addFlashAttribute("login_error", "Please login to check out");
+			return "redirect:/login";
 		}
 		if(tokenSession == null) {
 			tokenSession = UUID.randomUUID().toString();

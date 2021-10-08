@@ -45,7 +45,7 @@ public class CartService {
 	public Cart existingShoppingCart(Long id, String token, int quantity) {
 		Cart shoppingCart = cartRepository.findBytokenSession(token);
 		Product product = prodService.findOneProduct(id);
-		Boolean productDoesExistInTheCart = false;
+		Boolean existingProduct = false;
 		if(shoppingCart != null) {
 			List<CartItem> items = shoppingCart.getItems();
 				for(CartItem item : items) {
@@ -58,7 +58,7 @@ public class CartService {
 					}
 			}
 		}
-		if(!productDoesExistInTheCart && (shoppingCart != null))
+		if(!existingProduct && (shoppingCart != null))
 		{
 			CartItem cartItem1 = new CartItem();
 			cartItem1.setProduct(product);
@@ -78,7 +78,7 @@ public class CartService {
 		cartRepository.delete(shoppingCart);
 	}
 
-	public Cart removeCartIemFromShoppingCart(Long id, String sessionToken) {
+	public Cart removeItemFromCart(Long id, String sessionToken) {
 		Cart shoppingCart = cartRepository.findBytokenSession(sessionToken);
 		List<CartItem> items = shoppingCart.getItems();
 		CartItem cartItem = null;

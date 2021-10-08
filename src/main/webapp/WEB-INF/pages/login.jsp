@@ -8,12 +8,12 @@
 
 		
 <div class="log_reg_container">
-
 <!-- LOGIN -->
 	<div class="login_wrapper">
 
 		<form method="POST" action="/login" class="form">
 				<h3>Login</h3>
+				<span class="checkout_error">${login_error}</span>
 			<span class="login_errors">${error}</span>
 			<div class="form_wrapper">
 			<label class="form_label" for="email">Email: </label>

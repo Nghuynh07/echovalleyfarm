@@ -3,7 +3,6 @@ package echovalley.farm.models;
 import java.util.Date;
 import java.util.Objects;
 
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 
 
@@ -27,7 +27,10 @@ public class CartItem {
 	
 	@Temporal(TemporalType.DATE)
 	private Date date;
+
 	private Double totalProductPrice;
+
+	private Double totalCartPrice;
 	private String itemNumber;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -102,6 +105,14 @@ public class CartItem {
 
 	public void setItemNumber(String itemNumber) {
 		this.itemNumber = itemNumber;
+	}
+
+	public Double getTotalCartPrice() {
+		return totalCartPrice;
+	}
+
+	public void setTotalCartPrice(Double totalCartPrice) {
+		this.totalCartPrice = totalCartPrice;
 	}
 
 

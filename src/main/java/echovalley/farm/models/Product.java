@@ -1,11 +1,7 @@
 package echovalley.farm.models;
 
 
-import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,9 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
+
 import javax.persistence.Table;
 
 
@@ -33,14 +27,7 @@ public class Product {
 	private String img_url;
 	private String unit; 
 	private String description;
-	
-	@Column(updatable=false)
-	private Date createdAt;
-	private Date updatedAt;
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<CartItem> items;
-	
+
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="cateogry_id")
 	private Category category;
@@ -53,14 +40,7 @@ public class Product {
 		this.description = description;
 		this.category = category;
 	}
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
-	@PreUpdate
-	protected void onUpdate() {
-		this.updatedAt = new Date();
-	}
+
 	public Product() {
 
 	}
@@ -82,18 +62,7 @@ public class Product {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+
 
 	public String getImg_url() {
 		return img_url;
@@ -120,16 +89,6 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List<CartItem> getItems() {
-		return items;
-	}
-	public void setItems(List<CartItem> items) {
-		this.items = items;
-	}
-
-
-
-	
 
 	
 }

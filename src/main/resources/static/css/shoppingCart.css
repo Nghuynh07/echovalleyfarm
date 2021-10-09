@@ -91,3 +91,15 @@
 .checkout_error {
 	color: red;
 }
+
+
+.cart_quantity{
+	text-align:center;
+	border-radius: 45%;
+	position: absolute;
+	font-size: 1.2rem;
+	background-color: red;
+	padding: .4rem;
+	top: .2em;
+	right: rem;
+}

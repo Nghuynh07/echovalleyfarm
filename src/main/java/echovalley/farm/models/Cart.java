@@ -27,7 +27,7 @@ public class Cart {
 	
 	private Long id;
 	private Date date;
-	private String tokenSession;
+	private String cartSession;
 	private Double totalCartPrice;
 	
 	
@@ -78,9 +78,7 @@ public class Cart {
 	public List<CartItem> getItems() {
 		return items;
 	}
-	public String getTokenSession() {
-		return tokenSession;
-	}
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
@@ -88,14 +86,24 @@ public class Cart {
 	public void setItems(List<CartItem> items) {
 		this.items = items;
 	}
-	public void setTokenSession(String tokenSession) {
-		this.tokenSession = tokenSession;
-	}
-	public Double getTotalCartPrice() {
-		return totalCartPrice;
-	}
+
+
 	public void setTotalCartPrice(Double totalCartPrice) {
 		this.totalCartPrice = totalCartPrice;
+	}
+	public String getCartSession() {
+		return cartSession;
+	}
+	public void setCartSession(String cartSession) {
+		this.cartSession = cartSession;
+	}
+	public Double getTotalCartPrice() {
+		Double total = 0.0;
+		for(CartItem item : items ) {
+			total+= item.getProduct().getPrice() * item.getQuantity();
+		}
+		this.totalCartPrice = total;
+		return this.totalCartPrice;
 	}
 
 

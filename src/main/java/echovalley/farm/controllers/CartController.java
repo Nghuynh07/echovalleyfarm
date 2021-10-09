@@ -2,6 +2,7 @@ package echovalley.farm.controllers;
 
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +27,12 @@ public class CartController {
 
 	
 	@GetMapping("/shoppingCart")
-	public String shoppingCart(HttpSession session, Model model) {
+	public String shoppingCart(HttpServletRequest request, Model model) {
+		String token = (String)request.getSession().getAttribute("token");
+		request.setAttribute("cart", token);
+		model.addAttribute("cart", cartService.getCarts());
 		model.addAttribute("items", cartItemService.getCartItems());
-		String tokenSession = (String)session.getAttribute("tokenSession");
-
-		if(tokenSession == null) {
-			tokenSession = UUID.randomUUID().toString();
-			session.setAttribute("tokenSession", tokenSession);
-		}
-
-		model.addAttribute("cart", tokenSession);
-		System.out.println("Shopping Cart Session is:" + tokenSession);
+		System.out.println("Current Shopping Cart Session is:" + request.getSession(false).getAttribute("token"));
 		return "pages/cart.jsp";
 	}
 	
@@ -44,36 +40,40 @@ public class CartController {
 	@PostMapping("/addToCart")
 	public String addToCart(
 			HttpSession session,
+			HttpServletRequest request,
 			Model model,
 			@RequestParam("id") Long id,
 			@RequestParam("quantity") int quantity) {
 		
 		//tokenSession
-		String token = (String) session.getAttribute("tokenSession");
+		String token = (String) request.getSession(true).getAttribute("token");
 		if(token == null) {
 			token = UUID.randomUUID().toString();
-			session.setAttribute("tokenSession", token);
-			cartService.newShoppingCart(id, token, quantity);
+			request.getSession().setAttribute("token", token);
+			request.getSession().setMaxInactiveInterval(604800);
+			this.cartService.newShoppingCart(id, token, quantity);
+			System.out.println("Shopping Cart Session timedout is: " + request.getSession().getMaxInactiveInterval());
 		}
 		else {
 			this.cartService.existingShoppingCart(id,token,quantity);
-			System.out.println("success");
+			System.out.println("Success");
 		}
 		return "redirect:/produces";
 	}
 	
 	@GetMapping("/removeCartItem/{id}")
-	public String removeItem(@PathVariable("id") Long id, HttpSession session) {
-		String token = (String) session.getAttribute("tokenSession");
+	public String removeItem(@PathVariable("id") Long id, HttpServletRequest request) {
+		String token = (String) request.getSession(false).getAttribute("token");
 		cartService.removeItemFromCart(id,token);
 		System.out.println("success");
 		return "redirect:/shoppingCart";
 	}
 
 	@GetMapping("/clearCart")
-	public String clearCart(HttpSession session) {
-		String sessionToken = (String) session.getAttribute("tokenSession");
-		session.removeAttribute(sessionToken);
+	public String clearCart(HttpServletRequest request, RedirectAttributes redirect) {
+		String token = (String) request.getSession(false).getAttribute("token");
+		request.getSession(false).removeAttribute(token);
+		cartService.clearCart(token);
 		return "redirect:/shoppingCart";
 	}
 
@@ -85,20 +85,15 @@ public class CartController {
 	}
 	
 	@GetMapping("/checkout")
-	public String checkout(HttpSession session, Model model, RedirectAttributes redirect) {
+	public String checkout(HttpServletRequest request, Model model, RedirectAttributes redirect) {
 		model.addAttribute("items", cartItemService.getCartItems());
-		String tokenSession = (String)session.getAttribute("tokenSession");
-		Long id = (Long)session.getAttribute("user__id");
+		String token = (String)request.getSession(false).getAttribute("token");
+		Long id = (Long)request.getSession().getAttribute("user__id");
 		if(id == null) {
 			redirect.addFlashAttribute("login_error", "Please login to check out");
 			return "redirect:/login";
 		}
-		if(tokenSession == null) {
-			tokenSession = UUID.randomUUID().toString();
-			session.setAttribute("tokenSession", tokenSession);
-		}
-
-		model.addAttribute("cart", tokenSession);
+		model.addAttribute("cart", token);
 		return "pages/checkOutPage.jsp";
 	}
 	

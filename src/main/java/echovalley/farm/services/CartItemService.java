@@ -18,5 +18,8 @@ public class CartItemService {
 		return this.cartItemRepo.findAll();
 	}
 
+	public CartItem getOneItem(Long id) {
+		return this.cartItemRepo.findById(id).orElse(null);
+	}
 	
 }

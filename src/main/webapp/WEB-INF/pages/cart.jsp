@@ -34,7 +34,7 @@
 	<p>${i.product.price} / ${i.product.unit}</p>
 	<p>Quantity: ${i.quantity}</p>
 	<form action="/updateQuantity/${i.id}" method="POST">
-	<input class="cart_input" type="number"  name="quantity" min="1" max="50" value="1"/>
+	<input class="cart_input" type="number"  name="quantity" min="1" max="100" value="1"/>
 	<input  class="quantity" type="submit" value="Update" />
 	</form>
 	<h3>Total Price: ${i.totalProductPrice} </h3>
@@ -50,7 +50,11 @@
 <div class="shopping_cart_part3">
 <p>Sub-Total</p>
 <p>Plus tax</p>
-<h2></h2>
+<c:forEach items="${carts}" var="c">
+<h2>${c.totalCartPrice}</h2>
+</c:forEach>
+
+
 </div>
 <a href="/checkout" class="btn_link checkout_btn">Checkout</a>
 </div>

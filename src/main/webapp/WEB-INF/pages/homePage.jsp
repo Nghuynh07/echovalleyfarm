@@ -9,9 +9,8 @@
 <div class="home_container">
 <!-- HEADER -->
 <header class="header">
-<span class="hamburger"></span>
-<h1 class="header_title">echo valley farm</h1>
-
+<h1 class="header_title">echo valley family farm</h1>
+<p class="header_text">our family serving the maple falls community</p>
 <div>
 <a class="btn_link" href="/about">about us</a>
 <a class="btn_link" href="#contact">contact</a>
@@ -19,8 +18,6 @@
 
 
 </header>
-
-<p class="arrow">&#8593;</p>
 
 <!-- MAIN -->
 
@@ -215,9 +212,12 @@
 
 <div class="contact_infos">
 <p class="message">Please leave a message and we will get back to you as soon as we can</p>
+<div>
 <p class="contact_details">Our Contacts</p>
 <p>1111 00th maple falls</p>
 <p>000-000-0000</p>
+</div>
+
 </div>
 
 

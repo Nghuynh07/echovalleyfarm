@@ -21,7 +21,10 @@ public class CartService {
 	@Autowired
 	private CartItemRepository cartItemRepository;
 
-
+	public List<Cart> getCarts(){
+		return this.cartRepository.findAll();
+	}
+	
 	public CartItem updateShoppingCartItem(Long id, int quantity) {
 		CartItem cartItem = cartItemRepository.findById(id).orElse(null);
 		cartItem.setQuantity(quantity);
@@ -29,21 +32,20 @@ public class CartService {
 		return cartItemRepository.save(cartItem);
 	}
 	
-	public Cart newShoppingCart(Long id, String tokenSession, int quantity) {
+	public Cart newShoppingCart(Long id, String token, int quantity) {
 		Cart cart = new Cart();
 		CartItem cartItem = new CartItem();
 		cartItem.setProduct(prodService.findOneProduct(id));
 		cartItem.setQuantity(quantity);
 		cartItem.setDate(new Date());
 		cartItem.setTotalProductPrice(prodService.findOneProduct(id).getPrice() * cartItem.getQuantity());
-		Math.floor(cartItem.getTotalProductPrice());
-		cart.setTokenSession(tokenSession);
+		cart.setCartSession(token);
 		cart.setDate(new Date());
 		return cartRepository.save(cart);
 	}
 	
 	public Cart existingShoppingCart(Long id, String token, int quantity) {
-		Cart shoppingCart = cartRepository.findBytokenSession(token);
+		Cart shoppingCart = cartRepository.findBycartSession(token);
 		Product product = prodService.findOneProduct(id);
 		Boolean existingProduct = false;
 		if(shoppingCart != null) {
@@ -74,12 +76,12 @@ public class CartService {
 
 	}
 	public void clearCart(String tokenSession) {
-		Cart shoppingCart = cartRepository.findBytokenSession(tokenSession);
+		Cart shoppingCart = cartRepository.findBycartSession(tokenSession);
 		cartRepository.delete(shoppingCart);
 	}
 
-	public Cart removeItemFromCart(Long id, String sessionToken) {
-		Cart shoppingCart = cartRepository.findBytokenSession(sessionToken);
+	public Cart removeItemFromCart(Long id, String sessionToken ) {
+		Cart shoppingCart = cartRepository.findBycartSession(sessionToken);
 		List<CartItem> items = shoppingCart.getItems();
 		CartItem cartItem = null;
 		for(CartItem item : items) {

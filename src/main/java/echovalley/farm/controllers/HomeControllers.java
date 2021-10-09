@@ -4,11 +4,16 @@ package echovalley.farm.controllers;
 
 
 
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import echovalley.farm.models.User;
 import echovalley.farm.services.CartItemService;
 import echovalley.farm.services.ProductService;
@@ -21,8 +26,6 @@ public class HomeControllers {
 	@Autowired
 	private UserService userService;
 
-
-	
 	@Autowired
 	private CartItemService cartItemService;
 	
@@ -30,8 +33,13 @@ public class HomeControllers {
 	private String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct","Nov", "Dec"};
 	
 	@GetMapping(value={"/", "/home"})
-	public String home(HttpSession session,Model model) {
-		String cartSession = (String) session.getAttribute("tokenSession");
+	public String home(HttpServletRequest request,Model model) {
+		String cartSession = (String) request.getSession(true).getAttribute("token");
+		if(cartSession == null) {
+			cartSession = UUID.randomUUID().toString();
+			request.getSession().setAttribute(cartSession, cartSession);
+			System.out.println("Shopping cart is: " + cartSession);
+		}
 		model.addAttribute("cart", cartSession);
 		model.addAttribute("items", cartItemService.getCartItems());
 		model.addAttribute("products", this.prodService.findAllProducts());

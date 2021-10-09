@@ -3,13 +3,13 @@
 /* FOOTER */
 @import url('https://fonts.googleapis.com/css2?family=Birthstone&family=Ephesis&display=swap');
 .footer {
-	padding: var(--padding-md);
+	padding: var(--padding-sm);
 	background-color: var(--primary-clr);
 
 	color: white;
-	
 	display: grid;
 	grid-gap: 2rem;
+	justify-content: center
 
 }
 h2 {
@@ -20,38 +20,25 @@ h2 {
 	font-family: 'Birthstone', cursive;
 }
 
-.three_initials {
-	color: var(--secondary-clr);
-}
-
-
 .footer_list {
 	list-style: none;
-
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));
-
+	display: flex;
+	justify-content: center;
 }
 
 .footer_item {
-	font-weight: 300;
-	justify-self: center;
-	align-self: center;
-	padding: var(--padding-sm);
-	transition: background-color 300ms, transform 300ms, color 300ms;
+	transition: background-color 300ms, transform 300ms, color 300ms, border 500ms;
 }
 
 .footer_item:hover{
 	transform: translateY(3px);
 }
 
-
-
 .footer_link:link,
 .footer_link:visited{
 	text-decoration: none;
-	font-size: 1.2rem;
-	padding: 1rem 3rem;
+	font-size: 3rem;
+	padding: .5rem 1.5rem;
 	border-radius: 5px;
 	letter-spacing: .2rem;
 	color: var(--white-clr);
@@ -59,12 +46,9 @@ h2 {
 }
 
 .footer_link:hover {
-	background-color: var(--dark-clr);
-	color: var(--light-clr);
-	
+	background-color: var(--light-clr);
+	color: var(--dark-clr);
 }
-
-
 .copyright {
 	justify-self: center;
 }

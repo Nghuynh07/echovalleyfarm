@@ -15,7 +15,7 @@ import echovalley.farm.models.Cart;
 @Repository
 public interface CartRepository extends CrudRepository<Cart, Long> {
 
-	Cart findBytokenSession(String tokenSession);
+	Cart findBycartSession(String tokenSession);
 
 	List<Cart> findAll();
 	

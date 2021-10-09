@@ -22,7 +22,7 @@
 	<p class="card_text">$${p.price} / ${p.unit}</p>
 	
 	<form class="cart_form" action="/addToCart" method="POST">
-	<input class="cart_input" type="number"  name="quantity" min="1" max="50" value="1"/>
+	<input class="cart_input" type="number"  name="quantity" min="1" max="100" value="1"/>
 	
 	<input class="cart_input" type="hidden" name="id" value="${p.id}" />
 	<button class="cart_btn" type="submit">ADD TO CART</button>

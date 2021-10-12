@@ -15,7 +15,6 @@
 
 <div class="shopping_cart_part1">
 	<h3>Shopping Cart</h3>
-	<a href="/clearCart">Remove</a>
 </div>
 <c:forEach items="${items}" var="i">
 <div class="shopping_cart_part2">
@@ -25,41 +24,31 @@
 	</figure>
 	<div>
 	<h3>${i.product.name}</h3>
-
 	</div>
 	
 
 	
 	<div>
-	<p>${i.product.price} / ${i.product.unit}</p>
-	<p>Quantity: ${i.quantity}</p>
+	<p>$${i.product.price} / ${i.product.unit}</p>
 	<form action="/updateQuantity/${i.id}" method="POST">
-	<input class="cart_input" type="number"  name="quantity" min="1" max="100" value="1"/>
+	<input class="cart_input" type="number"  name="quantity" min="1" max="100" value="${i.quantity}"/>
 	<input  class="quantity" type="submit" value="Update" />
 	</form>
 	<h3>Total Price: ${i.totalProductPrice} </h3>
 	</div>
 
 	
-	<div>
+	<div class="remove">
 	<a href="/removeCartItem/${i.id}">Remove</a>
 	</div>
 
 </div>
 </c:forEach>
 <div class="shopping_cart_part3">
-<p>Sub-Total</p>
-<p>Plus tax</p>
-<c:forEach items="${carts}" var="c">
-<h2>${c.totalCartPrice}</h2>
-</c:forEach>
-
 
 </div>
 <a href="/checkout" class="btn_link checkout_btn">Checkout</a>
 </div>
-
-
 
 
 </t:template>

@@ -3,14 +3,14 @@
 
 .produces {
 	grid-row: 3 span 1;
-	grid-column: 3 / 11;
+	grid-column: 2 / 12;
 	
 
 }
 
 .produces_wrapper{
 	display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
 	
 	grid-gap: var(--padding-md);
 	padding: var(--padding-md);
@@ -20,8 +20,8 @@
 .card {
 	border-radius: var(--border-radius-sm);
 	overflow: hidden;
-	box-shadow: 0 0 .5rem rgba(0,0,0,.2);
 	
+	box-shadow: 0 0 .5rem rgba(0,0,0,.2);
 	display: grid;
 	grid-gap: 2rem;
 	background-color: white;
@@ -102,13 +102,17 @@
 }
 .cart_btn {
 	outline: none;
-	border: none;
-	background-color:var(--secondary-clr);
-	color: var(--dark-clr);
+	border: 2px solid var(--light-clr);
+	background-color: #fff;
+	color: var(--light-clr);
 	padding: .8rem .8rem;
 	cursor: pointer;
 	border-radius: var(--border-radius-sm);
+	transition: background-color 500ms color 500ms;
 }
 
-
+.cart_btn:hover {
+	background-color: var(--light-clr);
+	color: var(--dark-clr);
+}
 

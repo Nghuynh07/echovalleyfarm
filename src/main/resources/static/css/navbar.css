@@ -12,13 +12,16 @@
 .navbar_list {
 	list-style: none;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min-content,20rem));
+	grid-template-columns: repeat(12,minmax(min-content,20rem))  ;
 	justify-content: center;
 	justify-items: center;
 	align-items: center;
 
 }
 
+.logo {
+	grid-column: 2/ span 1;
+}
 
 .navbar_logo {
 	text-decoration: none;
@@ -40,17 +43,27 @@
 	transition: transform 500ms;
 	font-size: 1.6rem;
 }
-.navbar_link:focus{
-	transform: scale(.97);
+
+.navbar_link:hover {
+	color: var(--light-clr);
 }
 
+._produce {
+		grid-column: 9 / span 1;
+}
 
+._logout, ._login {
+	grid-column: 10 / span 1;
+}
 .navbar_link:link,
 .navbar_link:active{
 	color: var(--white-clr);
 }
-
+.cart{
+		grid-column: 11 / span 1;
+}
 .shopping_cart {
+
 	position: relative;
 	border: 2px solid var(--white-clr);
 	border-radius: var(--border-radius-lg);
@@ -76,6 +89,7 @@
 	.navbar {
 		display: flex;
 		justify-content: center;
+		display: none;
 	}
 	.navbar_list {
 		display: flex;

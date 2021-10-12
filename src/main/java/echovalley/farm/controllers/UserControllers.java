@@ -2,6 +2,7 @@ package echovalley.farm.controllers;
 
 
 
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -34,18 +35,21 @@ public class UserControllers {
 	
 	
 	@GetMapping("/register")
-	public String registerPage(@ModelAttribute("user") User user) {
+	public String registerPage(@ModelAttribute("user") User user, HttpSession session, Model model) {
+
 		return "pages/register.jsp";
 	}
 	
 	@GetMapping("/login")
-	public String loginPage(Model model, @ModelAttribute("user") User user) {
+	public String loginPage(Model model, @ModelAttribute("user") User user, HttpSession session) {
 		model.addAttribute("items", cartItemService.getCartItems());
+		Long userSession = (Long) session.getAttribute("user__id");
+		model.addAttribute("user", userSession);
 		return "pages/login.jsp";
 	}
 	
 	@PostMapping("/register")
-	public String register(@Valid @ModelAttribute("user") User user, HttpSession session, BindingResult result) {
+	public String register(@Valid @ModelAttribute("user") User user, HttpSession session, BindingResult result,Model model) {
 		userValidations.validate(user, result);
 		if(result.hasErrors()) {
 			return "pages/register.jsp";

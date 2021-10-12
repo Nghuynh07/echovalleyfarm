@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+.checkout {
+	display: grid;
+	width: 100%;
+	padding: 10rem;
+	
+	grid-template-columns: minmax(min-content,1fr) repeat(10, minmax(min-content, 25rem)) minmax(min-content,1fr);
+	
+	grid-template-rows: repeat(auto-fit, minmax(30rem,1fr))
+}
+
+.billling_address {
+	grid-column: 1 / 2
+}

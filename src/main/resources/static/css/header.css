@@ -5,44 +5,40 @@
 
 .header {
 
-	height: 80vh;
+	height: 85vh;
 
-	background-color: rgba(0,0,0,.2);
+	background-color: rgba(0,0,0,.3);
 	background-image: url(../img/cover.jpg);
 	background-size: cover;
-	background-position:  center;
+	background-position: center;
+	background-blend-mode: hard-light;
 
-	background-blend-mode: darken;
 
 	grid-row: 1 / span 1;
 	grid-column: 1 / -1;
-	
-	
 
 	
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	grid-gap: 2rem;
 	text-align: center;
 	position: relative;
 
 }
 
 
-
 .header_title{
-	font-size: 8rem;
+	font-size: 6rem;
 	text-transform: uppercase;
 	color: var(--white-clr);
-
-
 
 	position: relative;
 	font-family: 'Birthstone', cursive;
 	letter-spacing: .5rem;
 	font-weight: 700;
+
+
 }
 
 .header_text{
@@ -52,12 +48,14 @@
 	font-weight: bold;
 	letter-spacing: .5rem;
 	font-family: 'Birthstone', cursive;
+	margin-bottom: 2rem;
 }
 
 @media only screen and (max-width: 600px){
 	.header_title{
 		text-align: center;
 		font-size: 6rem;
+
 	}
 }
 

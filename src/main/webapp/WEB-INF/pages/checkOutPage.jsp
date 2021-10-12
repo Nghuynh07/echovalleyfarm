@@ -7,5 +7,21 @@
 
 <t:template>
 
-<h1>check out page</h1>
+<div class="checkout">
+
+	<div class="payment">
+	payment
+	</div>
+	
+	<div class="billling_address">
+	billing address
+	</div>
+
+	<div class="order_summary">
+	order summary
+	</div>
+
+</div>
+
+
 </t:template>

@@ -9,11 +9,14 @@
 <div class="home_container">
 <!-- HEADER -->
 <header class="header">
+<div>
 <h1 class="header_title">echo valley family farm</h1>
 <p class="header_text">our family serving the maple falls community</p>
 <div>
 <a class="btn_link" href="/about">about us</a>
 <a class="btn_link" href="#contact">contact</a>
+</div>
+
 </div>
 
 

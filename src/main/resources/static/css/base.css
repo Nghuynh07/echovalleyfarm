@@ -3,8 +3,8 @@
 
 
 :root{
-	--primary-clr: #55590d;
-	--secondary-clr: #a6b89c;
+	--primary-clr: #434c06;
+	--secondary-clr: #5f8576;
 	
 	--light-clr:#a6b89c;
 	--dark-clr: #474d5c;
@@ -21,7 +21,7 @@
 	--border-radius-sm: 5px;
 	--border-radius-lg: 20px;
 	
-	--box-shadow: 0 0 .5rem rgba(180, 180, 180, .5);
+	--box-shadow: 0 0 .5rem rgba(180, 180, 180, .9);
 }
 
 *,
@@ -34,6 +34,9 @@
 	
 }
 
+body {
+		background-color: #ECEFF1;
+}
 
 
 html {

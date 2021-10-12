@@ -17,11 +17,20 @@
 <nav class="navbar display">
 <ul class="navbar_list">
 	<li class="logo"><a class="navbar_logo" href="/">EVFF</a></li>
-	<li class="navbar_item _profile"><a class="navbar_link" href="/profile">Profile</a></li>
+	<!--  <li class="navbar_item _profile"><a class="navbar_link" href="/profile">Profile</a></li>-->
 	<li class="navbar_item _produce"><a class="navbar_link" href="/products">Produce</a></li>
-	<li class="navbar_item _logout"><a class="navbar_link" href="/logout">Logout</a></li>
-	<li class="navbar_item _login"><a class="navbar_link" href="/login">Login</a></li>
-	<li class="navbar_item"><a class="shopping_cart font" href="/shoppingCart"><i class="fas fa-shopping-cart"><span class="cart_quantity">${items.size()}</span></i></a></li>
+	<c:choose>
+		<c:when test="${user != null}">
+		<li class="navbar_item _logout"><a class="navbar_link" href="/logout">Logout</a></li>
+		</c:when>
+		<c:otherwise>
+			<li class="navbar_item _login"><a class="navbar_link" href="/login">Login</a></li>
+		</c:otherwise>
+	
+	</c:choose>
+
+
+	<li class="navbar_item cart"><a class="shopping_cart font" href="/shoppingCart"><i class="fas fa-shopping-cart"><span class="cart_quantity">${items.size()}</span></i></a></li>
 </ul>
 
 </nav>

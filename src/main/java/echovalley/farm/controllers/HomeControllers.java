@@ -33,14 +33,16 @@ public class HomeControllers {
 	private String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct","Nov", "Dec"};
 	
 	@GetMapping(value={"/", "/home"})
-	public String home(HttpServletRequest request,Model model) {
+	public String home(HttpServletRequest request,Model model, HttpSession session) {
 		String cartSession = (String) request.getSession(true).getAttribute("token");
+		Long user = (Long) session.getAttribute("user__id");
 		if(cartSession == null) {
 			cartSession = UUID.randomUUID().toString();
 			request.getSession().setAttribute(cartSession, cartSession);
 			System.out.println("Shopping cart is: " + cartSession);
 		}
 		model.addAttribute("cart", cartSession);
+		model.addAttribute("user", user);
 		model.addAttribute("items", cartItemService.getCartItems());
 		model.addAttribute("products", this.prodService.findAllProducts());
 
@@ -64,14 +66,18 @@ public class HomeControllers {
 	}
 	
 	@GetMapping("/about")
-	public String about() {
+	public String about(HttpSession session,Model model) {
+		Long user = (Long) session.getAttribute("user__id");
+		model.addAttribute("user", user);
 		return "pages/about.jsp";
 	}
 
 	@GetMapping(value={"/products", "/produces"})
 	public String products(Model model, HttpSession session) {
 		String tokenSession = (String)session.getAttribute("tokenSession");
+		Long user = (Long) session.getAttribute("user__id");
 		model.addAttribute("cart", tokenSession);
+		model.addAttribute("user", user);
 		model.addAttribute("products", prodService.findAllProducts());
 		model.addAttribute("items", cartItemService.getCartItems());
 		return "pages/products.jsp";

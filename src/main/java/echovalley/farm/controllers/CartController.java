@@ -27,9 +27,11 @@ public class CartController {
 
 	
 	@GetMapping("/shoppingCart")
-	public String shoppingCart(HttpServletRequest request, Model model) {
+	public String shoppingCart(HttpServletRequest request, Model model,HttpSession session) {
 		String token = (String)request.getSession().getAttribute("token");
+		Long user = (Long) session.getAttribute("user__id");
 		request.setAttribute("cart", token);
+		model.addAttribute("user", user);
 		model.addAttribute("cart", cartService.getCarts());
 		model.addAttribute("items", cartItemService.getCartItems());
 		System.out.println("Current Shopping Cart Session is:" + request.getSession(false).getAttribute("token"));
@@ -93,6 +95,7 @@ public class CartController {
 			redirect.addFlashAttribute("login_error", "Please login to check out");
 			return "redirect:/login";
 		}
+		model.addAttribute("user", id);
 		model.addAttribute("cart", token);
 		return "pages/checkOutPage.jsp";
 	}
